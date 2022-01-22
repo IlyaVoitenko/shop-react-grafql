@@ -1,13 +1,52 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import {
+  updateListTypesCategories,
+  updateListProducts,
+  updateListRates,
+} from "../../store/actionCreaters";
 
-const urlBase = `http://localhost:4000/`;
+export function getListProducts() {
+  return (dispatch) => {
+    return axios({
+      url: "http://localhost:4000/",
+      method: "POST",
+      data: {
+        query: `
+        query data {
+          category{
+            name,
+            products{
+                     id,
+                     name,
+                     gallery,
+                     inStock,
+                     description,
+                    category,
+                    prices{
+                      currency{
+                        label,
+                        symbol
+                      },
+                      amount
+                    },
+                    brand
+            }
+          }
+        }`,
+      },
+    }).then((result) => {
+      dispatch(updateListProducts(result.data.data.category.products));
+    });
+  };
+}
+
 export function getCurrencyRates() {
-  axios({
-    url: urlBase,
-    method: "post",
-    data: {
-      query: `
+  return (dispatch) => {
+    return axios({
+      url: "http://localhost:4000/",
+      method: "post",
+      data: {
+        query: `
               query data {
                 currencies{
                   label,
@@ -15,8 +54,29 @@ export function getCurrencyRates() {
                 }
                 }
                 `,
-    },
-  }).then((result) => {
-    return dispatch(updateListRates(result.data));
-  });
+      },
+    }).then((result) => {
+      console.log(result);
+      dispatch(updateListRates(result.data.data.currencies));
+    });
+  };
+}
+
+export function getTypesCategories() {
+  return (dispatch) =>
+    axios({
+      url: `http://localhost:4000/`,
+      method: "POST",
+      data: {
+        query: `
+              query categoriesTypes {
+                  categories{
+                    name
+                  }
+                }
+                `,
+      },
+    }).then((result) => {
+      dispatch(updateListTypesCategories(result.data.data.categories));
+    });
 }

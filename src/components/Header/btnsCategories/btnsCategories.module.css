@@ -1,0 +1,11 @@
+.btnCategories {
+  width: 100px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  float: left;
+}
+.btnCategories:hover {
+  color: rgb(5, 236, 5);
+  border-bottom: rgb(5, 236, 5) 2px solid;
+}

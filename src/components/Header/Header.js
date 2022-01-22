@@ -1,51 +1,31 @@
 import React, { useEffect } from "react";
-import axios from "axios";
-import { getListRates } from "./selectors";
-import { useDispatch, useSelector } from "react-redux";
-import { updateListRates } from "../../store/actionCreaters";
+import BtnsCategories from "./btnsCategories";
+import Currencies from "./Currencies";
+import { Link } from "react-router-dom";
+import { getCurrencyRates, getTypesCategories } from "../API/api";
+import style from "./header.module.css";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
-  const urlBase = `http://localhost:4000/`;
   const dispatch = useDispatch();
-
-  function getCurrencyRates() {
-    axios({
-      url: urlBase,
-      method: "post",
-      data: {
-        query: `
-              query data {
-                currencies{
-                  label,
-                  symbol
-                }
-                }
-                `,
-      },
-    }).then((result) => {
-      return dispatch(updateListRates(result.data.data.currencies));
-    });
-  }
   useEffect(() => {
-    getCurrencyRates();
+    dispatch(getCurrencyRates());
+    dispatch(getTypesCategories());
   }, []);
-  const listRates = useSelector(getListRates);
-  const categories = ["MEN", "WOMEN", "KIDS"];
-  console.log(listRates);
   return (
-    <div>
-      {categories.map((categorie, index) => {
-        return <button key={index}>{categorie}</button>;
-      })}
-      <select>
-        {listRates.map((rate, index) => {
-          return (
-            <option key={index} value={rate.label}>
-              {rate.symbol} {rate.label}
-            </option>
-          );
-        })}
-      </select>
+    <div className={style.container}>
+      <BtnsCategories />
+      <Link to="/basket" className={style.basketLink}>
+        <img src="https://img.icons8.com/fluency/48/000000/delete.png" alt="" />
+      </Link>
+      <Currencies />
+      <a href=" " className={style.basket}>
+        <img
+          src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"
+          alt=""
+          className={style.basketIcon}
+        />
+      </a>
     </div>
   );
 };

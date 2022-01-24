@@ -3,15 +3,21 @@ import {
   UPDATE_LIST_TYPES_CATEGORIES,
   UPDATE_LIST_PRODUCTS,
   SELECT_CURRENCY,
-  PRICE_PRODUCT,
+  DESCRIPTION_PRODUCT,
+  UPDATE_SIZE_CLOTHES,
+  UPDATE_PATH_MAIN_IMAGE,
+  UPDATE_LIST_CART,
 } from "./actionTypes";
 
 const initialState = {
   listProducts: [],
   listRates: [],
   listTypesCategories: [],
+  listCart: [],
   selectedCurrency: "USD",
-  priceProduct: { amount: 0, currency: { label: "", symbol: "" } },
+  sizeClothes: "XL",
+  descriptionProduct: { gallery: [""] },
+  srcMainImg: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,10 +28,20 @@ const reducer = (state = initialState, action) => {
       return { ...state, listTypesCategories: [...action.payload] };
     case UPDATE_LIST_PRODUCTS:
       return { ...state, listProducts: [...action.payload] };
+    case UPDATE_LIST_CART:
+      return {
+        ...state,
+        listCart: [...state.listCart, action.payload],
+      };
     case SELECT_CURRENCY:
       return { ...state, selectedCurrency: action.payload };
-    case PRICE_PRODUCT:
-      return { ...state, priceProduct: action.payload };
+    case DESCRIPTION_PRODUCT:
+      return { ...state, descriptionProduct: { ...action.payload } };
+    case UPDATE_SIZE_CLOTHES:
+      return { ...state, sizeClothes: action.payload };
+    case UPDATE_PATH_MAIN_IMAGE:
+      return { ...state, srcMainImg: action.payload };
+
     default:
       return state;
   }

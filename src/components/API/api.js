@@ -56,7 +56,6 @@ export function getCurrencyRates() {
                 `,
       },
     }).then((result) => {
-      console.log(result);
       dispatch(updateListRates(result.data.data.currencies));
     });
   };

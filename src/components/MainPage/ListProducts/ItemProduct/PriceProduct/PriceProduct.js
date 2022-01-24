@@ -8,16 +8,11 @@ import style from "./PriceProduct.module.css";
 const PriceProduct = ({ prices }) => {
   const dispatch = useDispatch();
   const selectedCurrency = useSelector(getSelectedCurrency);
-  const priceProduct = useSelector(getPriceProduct);
   const currentCarrencyProduct = prices.filter(
     (price) => price.currency.label === selectedCurrency
   );
-  const { amount } = priceProduct;
-  const { symbol } = priceProduct.currency;
-
-  useEffect(() => {
-    dispatch(updatePriceProduct(currentCarrencyProduct[0]));
-  }, [dispatch, selectedCurrency]);
+  const { amount } = currentCarrencyProduct[0];
+  const { symbol } = currentCarrencyProduct[0].currency;
 
   return (
     <div className={style.price}>

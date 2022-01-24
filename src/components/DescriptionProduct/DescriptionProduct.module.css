@@ -1,0 +1,26 @@
+.container {
+  text-align: left;
+  width: 100%;
+  float: right;
+  margin-top: 5%;
+}
+
+.containerImgs {
+  width: 20%;
+  float: left;
+  margin-top: 5%;
+}
+.containerImgs {
+  width: 20%;
+  margin-top: 5%;
+}
+.containerImgs div {
+  float: left;
+}
+.btnAddProductCart {
+  background-color: green;
+  color: white;
+  width: 50%;
+  height: 30px;
+  border: none;
+}

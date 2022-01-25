@@ -15,7 +15,7 @@ const initialState = {
   listTypesCategories: [],
   listCart: [],
   selectedCurrency: "USD",
-  sizeClothes: "XL",
+  sizeClothes: "",
   descriptionProduct: { gallery: [""] },
   srcMainImg: "",
 };
@@ -41,7 +41,6 @@ const reducer = (state = initialState, action) => {
       return { ...state, sizeClothes: action.payload };
     case UPDATE_PATH_MAIN_IMAGE:
       return { ...state, srcMainImg: action.payload };
-
     default:
       return state;
   }

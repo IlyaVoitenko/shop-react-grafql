@@ -17,10 +17,3 @@
 .containerImgs div {
   float: left;
 }
-.btnAddProductCart {
-  background-color: green;
-  color: white;
-  width: 50%;
-  height: 30px;
-  border: none;
-}

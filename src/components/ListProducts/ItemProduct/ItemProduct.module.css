@@ -4,7 +4,6 @@
   float: left;
   width: 25%;
   height: 550px;
-  background-color: cadetblue;
 }
 .container:hover {
   box-shadow: 4px 5px 12px 15px rgba(190, 190, 190, 0.39);
@@ -25,6 +24,4 @@
 }
 .btnBasketContainer {
   width: 100%;
-
-  background-color: rebeccapurple;
 }

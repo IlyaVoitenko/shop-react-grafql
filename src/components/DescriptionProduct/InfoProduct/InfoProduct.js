@@ -12,7 +12,10 @@ const InfoProduct = ({ symbol, amount, sizeClothes, product }) => {
     <div className={style.infoProduuct}>
       <h2>{brand}</h2>
       <h2>{category}</h2>
-      <ListSizeClothes sizeClothes={sizeClothes} />
+      {category === "clothes" ? (
+        <ListSizeClothes sizeClothes={sizeClothes} />
+      ) : null}
+
       <p>
         PRICE:
         <p>
@@ -21,12 +24,15 @@ const InfoProduct = ({ symbol, amount, sizeClothes, product }) => {
       </p>
       <button
         onClick={() => {
-          dispatch(
-            updateListCart({
-              sizeClothes: selecterSizeClothes,
-              product: product,
-            })
-          );
+          if (selecterSizeClothes !== "") {
+            dispatch(
+              updateListCart({
+                sizeClothes: selecterSizeClothes,
+                product: product,
+              })
+            );
+          }
+          return;
         }}
         className={style.btnAddProductCart}
       >

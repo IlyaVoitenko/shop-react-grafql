@@ -1,4 +1,4 @@
-import { getListProducts } from "../../API/api";
+import { getListProducts } from "../API/api";
 import { useEffect } from "react";
 import { getStateListProducts } from "./selectors";
 import { useDispatch, useSelector } from "react-redux";

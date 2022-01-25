@@ -14,7 +14,7 @@ export function getListProducts() {
         query: `
         query data {
           category{
-            name,
+            name ,
             products{
                      id,
                      name,

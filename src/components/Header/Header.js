@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className={style.container}>
       <BtnsCategories />
-      <Link to="/basket" className={style.basketLink}>
+      <Link to="/cart" className={style.basketLink}>
         <img src="https://img.icons8.com/fluency/48/000000/delete.png" alt="" />
       </Link>
       <Currencies />

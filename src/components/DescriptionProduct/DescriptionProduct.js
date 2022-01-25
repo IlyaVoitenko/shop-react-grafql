@@ -8,13 +8,9 @@ import style from "./DescriptionProduct.module.css";
 const DescriptionProduct = () => {
   const product = useSelector(getDescriptionProduct);
   const selectedCurrency = useSelector(getSelectedCurrency);
-  const sizeClothes = [
-    { size: "XS" },
-    { size: "S" },
-    { size: "W" },
-    { size: "L" },
-  ];
+
   const { prices, gallery } = product;
+  console.log(product);
   const priceProduct = prices.filter(
     (price) => price.currency.label === selectedCurrency
   );
@@ -26,8 +22,7 @@ const DescriptionProduct = () => {
       <InfoProduct
         product={product}
         symbol={symbol}
-        amount={amount}
-        sizeClothes={sizeClothes}
+        amount={parseInt(amount)}
       />
     </div>
   );

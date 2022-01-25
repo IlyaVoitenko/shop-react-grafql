@@ -3,7 +3,7 @@ import style from "./ItemProduct.module.css";
 import PriceProduct from "./PriceProduct";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { updateDescriptionProduct } from "../../../../store/actionCreaters";
+import { updateDescriptionProduct } from "../../../store/actionCreaters";
 
 const ItemProduct = ({ product }) => {
   const dispatch = useDispatch();
